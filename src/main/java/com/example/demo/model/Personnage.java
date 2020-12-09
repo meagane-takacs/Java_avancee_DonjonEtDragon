@@ -5,6 +5,10 @@ public class Personnage {
     private String nom;
     private String type;
 
+    public Personnage(){
+
+    }
+
     public Personnage(int id, String nom, String type) {
         this.id = id;
         this.nom = nom;
