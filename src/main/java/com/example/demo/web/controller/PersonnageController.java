@@ -49,15 +49,7 @@ public class PersonnageController
     @GetMapping(value ="Personnage/list")
     public List<Personnage> afficherListePersonnages()
     {
-        RestTemplate restTemplate = new RestTemplate();
-
-        return personnageDao.findAll().stream().map( perso -> {
-            // Pour tous les personnages renvoyés par personnageDao.finAll(), qu'on manipule un par un
-            // On appelle sur ce serveur "Personnage/id", et on s'attend à avoir en retour un personnage
-            Personnage personnage = restTemplate.getForObject("http://localhost:8081/Personnage/"+perso.getId(), Personnage.class);
-            // On retourne une copie de ce personnage
-            return new Personnage(personnage.getId(), personnage.getNom(), personnage.getType());
-        }).collect(Collectors.toList());
+        return personnageDao.findAll();
     }
 
     //Personnages en post qui sert à ajouter un personnage
